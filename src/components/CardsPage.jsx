@@ -1,47 +1,27 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useFetch from '../hooks/useFetch';
+import useOnScreen from '../hooks/useOnScreen';
 import Card from './Card';
 
 function CardsPage() {
-    const { data, loading, error, hasMore, setPage } = useFetch('http://localhost:8000/flashs', 1, 10);
-    const [isFetching, setIsFetching] = useState(false);
-    const observer = useRef();
+    const { data, loading, error, page, setPage } = useFetch('http://localhost:8000/flashs', 1, 10);
+    const [ref, isIntersecting] = useOnScreen({ threshold: 0.1 });
 
-    const lastElementRef = useCallback(
-        node => {
-            if (loading || isFetching) return;
-            if (observer.current) observer.current.disconnect();
-            observer.current = new IntersectionObserver(entries => {
-                if (entries[0].isIntersecting && hasMore) {
-                    setIsFetching(true);
-                    setPage(prevPage => prevPage + 1);
-                }
-            });
-            if (node) observer.current.observe(node);
-        },
-        [loading, hasMore, isFetching]
-    );
-
-    // Update isFetching when data changes
     useEffect(() => {
-        if (data && data.length && isFetching) {
-            setIsFetching(false);
-        }
-    }, [data, isFetching]);
+        console.log(data)
+    }, [data])
+    useEffect(() => {
+        if(isIntersecting) setPage(page + 1) 
+    }, [isIntersecting])
 
     return (
         <div>
-            {error && <div>Error: {error}</div>}
-            {data.map((item, index) => {
-                if (data.length === index + 1) {
-                    return (
-                        <Card ref={lastElementRef} key={item.id} item={item}/>
-                    );
-                } else {
-                    return  <Card key={item.id} item={item}/>
-                }
+            {data.map((card, i) => {
+                if (i == (data.length - 1)) return <div ref={ref} key={i}><Card item={card} /></div>
+                return <Card key={i} item={card} />
             })}
-            {loading && <div>Loading...</div>}
+            {loading && <div className='loading'>Loading...</div>}
+            {error && <div>Error: {error}</div>}
         </div>
     );
 }
