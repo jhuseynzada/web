@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Card.css';
 import EditCardForm from './EditCardForm'; // Import the EditCardForm
 
-const Card = ({ item, refresh }) => {
+const Card = ({ item, refresh, isSelected, onToggleShared }) => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [editMode, setEditMode] = useState(false);
 
@@ -92,9 +92,18 @@ const Card = ({ item, refresh }) => {
               Created: {formatDate(item.createdAt)} | Updated: {formatDate(item.updatedAt)}
             </div>
             <div className="status">Status: {item.status}</div>
-            <button className='toggle-button' onClick={() => setShowAnswer(!showAnswer)}>Toggle Answer</button>
-            <button className='edit-button' onClick={handleEditClick}>Edit</button>
-            <button className='delete-button' onClick={() => handleDelete(item.id)}>Delete</button>
+            <div className='card-actions'>
+              <button className='toggle-button' onClick={() => setShowAnswer(!showAnswer)}>Toggle Answer</button>
+              <button className='edit-button' onClick={handleEditClick}>Edit</button>
+              <button className='delete-button' onClick={() => handleDelete(item.id)}>Delete</button>
+              <div className='mailselectedbox'>
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => onToggleShared(item)}
+                />
+              </div>
+            </div>
           </div>
         </>
       )}

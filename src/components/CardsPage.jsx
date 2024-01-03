@@ -11,6 +11,7 @@ function CardsPage() {
     const [statusFilter, setStatusFilter] = useState('');
     const [sortOption, setSortOption] = useState('');
     const [filteredCards, setFilteredCards] = useState([]);
+    const [sharedCards, setSharedCards] = useState([]);
 
     useEffect(() => {
         setFilteredCards(
@@ -48,6 +49,28 @@ function CardsPage() {
         console.log(event.target.value)
         setSortOption(event.target.value)
     }
+
+    const toggleSharedCard = (card) => {
+        setSharedCards((prevCards) => {
+            const isAlreadyShared = prevCards.some((sharedCard) => sharedCard.id === card.id);
+            if (isAlreadyShared) {
+                return prevCards.filter((sharedCard) => sharedCard.id !== card.id);
+            } else {
+                return [...prevCards, card];
+            }
+        });
+    };
+
+    const isCardSelected = (cardId) => {
+        return sharedCards.some((card) => card.id === cardId);
+    };
+
+    const handleShare = () => {
+        const jsonToShare = JSON.stringify(sharedCards);
+        console.log(jsonToShare); // For now, we'll just log it to the console
+
+        // Here, you would send 'jsonToShare' to your backend or email service
+    };
 
     return (
         <div className='pages-container'>
@@ -89,16 +112,27 @@ function CardsPage() {
                         <option value="Updated Date">Updated Date</option>
                     </select>
                 </div>
+                <button className='mailShareButton' onClick={handleShare}>Share Selected Cards</button>
             </div>
 
             {filteredCards.map((card, i) => {
                 if (i === (filteredCards.length - 1))
                     return (
                         <div ref={ref} key={i}>
-                            <Card item={card} refresh={() => refresh(card.id)} />
+                            <Card item={card}
+                                isSelected={isCardSelected(card.id)}
+                                onToggleShared={toggleSharedCard}
+                                refresh={() => refresh(card.id)}
+                                addSharedCards={() => setSharedCards([...sharedCards, card])}
+                            />
                         </div>
                     )
-                return <Card key={i} item={card} refresh={() => refresh(card.id)} />;
+                return <Card key={i} item={card}
+                    isSelected={isCardSelected(card.id)}
+                    onToggleShared={toggleSharedCard}
+                    refresh={() => refresh(card.id)}
+                    addSharedCards={() => setSharedCards([...sharedCards, card])}
+                />;
             })}
             {loading && <div className='loading'>Loading...</div>}
             {error && <div>Error: {error}</div>}

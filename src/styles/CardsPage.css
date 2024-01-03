@@ -55,3 +55,19 @@
   text-align: center;
   color: red;
 }
+
+.mailShareButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.mailShareButton:hover {
+  background-color: #45a049;
+}

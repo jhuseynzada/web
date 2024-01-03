@@ -9,7 +9,8 @@
 }
 
 /* Question and Answer Styling */
-.question, .answer {
+.question,
+.answer {
   font-size: 16px;
   margin-bottom: 10px;
 }
@@ -29,18 +30,22 @@
 }
 
 .toggle-button {
-  background-color: #2980B9; /* Blue */
+  background-color: #2980b9; /* Blue */
   color: white;
 }
 
 .edit-button {
-  background-color: #F39C12; /* Yellow */
+  background-color: #f39c12; /* Yellow */
   color: white;
 }
 
 .delete-button {
-  background-color: #E74C3C; /* Red */
+  background-color: #e74c3c; /* Red */
   color: white;
+}
+.card-actions {
+  display: flex;
+  align-items: center;
 }
 
 .card-buttons button:hover {
@@ -48,8 +53,20 @@
 }
 
 /* Date and Status Styling */
-.date, .status {
+.date,
+.status {
   font-size: 14px;
   color: #777;
   margin-bottom: 5px;
+}
+.mailselectedbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.mailselectedbox input {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px; 
 }
