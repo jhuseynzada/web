@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an assignment from web an mobile I course. In here we have home pages and contact pages. Main goal of this website is to show a list of flash cards, add, remove and update from server. It has also other functionalities like sharing and filtering. 
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+What things you need to install the software and how to install them.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js
+- npm (Node Package Manager)
 
-### `npm test`
+### Installing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A step by step series of examples that tell you how to get a development environment running.
 
-### `npm run build`
+First, clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/jhuseynzada/webmobileas3
+cd webmobileas3
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install the dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### Running the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To run the application, you will need to start both the React frontend and the `json-server` backend.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Start the React App:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+**Start the json-server:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run server
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This starts the `json-server` on [http://localhost:8000](http://localhost:8000). `json-server` provides a full fake REST API for your application. 
 
-### Code Splitting
+### json-server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project uses `json-server` as a mock backend. It allows you to simulate a real backend API with minimal setup. The data served by `json-server` is based on a JSON file. When you perform API requests (GET, POST, PUT, DELETE), `json-server` lets you interact with the JSON file as if it were a real API.
 
-### Analyzing the Bundle Size
+#### Features of json-server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Full fake REST API with zero coding.
+- Custom routes for simulating various API endpoints.
+- Ability to simulate CRUD operations on the data.
 
-### Making a Progressive Web App
+**json-server Data File**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The data for `json-server` is stored in a file, typically named `db.json`, located at the root of the project. This file is used to simulate the database for your application.
 
-### Advanced Configuration
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The following endpoints are available for CRUD operations:
 
-### Deployment
+- `GET /flashs`: Retrieves all cards.
+- `POST /flashs`: Creates a new card.
+- `GET /flashs/:id`: Retrieves a card by its ID.
+- `PUT /flashs/:id`: Updates a card by its ID.
+- `DELETE /flashs/:id`: Deletes a card by its ID.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Card Data Structure
 
-### `npm run build` fails to minify
+Each card has the following structure:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "id": 1,
+  "question": "What is React?",
+  "answer": "A JavaScript library for building user interfaces",
+  "status": "Learned",
+  "createdAt": "2021-01-01T00:00:00Z",
+  "updatedAt": "2021-01-02T00:00:00Z"
+}
+```
+
+#### Fields:
+
+- `id`: Unique identifier for the card (integer).
+- `question`: The question or prompt of the flashcard (string).
+- `answer`: The answer or information related to the question (string).
+- `status`: The learning status of the card (e.g., 'Learned', 'Want to Learn', 'Noted') (string).
+- `createdAt`: The creation date of the card (ISO 8601 format string).
+- `updatedAt`: The last update date of the card (ISO 8601 format string).
+
+## Built With
+
+- [React](https://reactjs.org/) - The web framework used
+- [json-server](https://github.com/typicode/json-server) - Full fake REST API
+
+
+## Authors
+
+- **Jamil Huseynzade** - *Initial work* - [YourGitHubProfile](https://github.com/YourGitHubProfile)
+
