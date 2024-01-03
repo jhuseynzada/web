@@ -106,5 +106,5 @@ Each card has the following structure:
 
 ## Authors
 
-- **Jamil Huseynzade** - *Initial work* - [YourGitHubProfile](https://github.com/YourGitHubProfile)
+- **Jamil Huseynzade** - *Initial work* - [Jhuseynzada](https://github.com/jhuseynzada)
 
