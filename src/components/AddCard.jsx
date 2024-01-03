@@ -25,7 +25,10 @@ const AddCard = () => {
                 },
                 body: JSON.stringify({
                     question: formData.question,
-                    answer: formData.answer
+                    answer: formData.answer,
+                    status: "Want to Learn",
+                    createdAt: new Date(),
+                    updateAt: new Date()
                 }),
             });
 

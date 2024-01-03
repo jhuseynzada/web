@@ -15,15 +15,15 @@
   outline: none;
 }
 
-.filter-dropdown {
+.dropdownbox {
   margin-bottom: 20px;
 }
 
-.filter-dropdown label {
+.dropdownbox label {
   margin-right: 10px;
 }
 
-.filter-dropdown select {
+.dropdownbox select {
   width: 200px;
   padding: 10px;
   font-size: 16px;
@@ -32,8 +32,13 @@
   outline: none;
 }
 
-.filter-dropdown select option {
+.dropdownbox select option {
   font-size: 16px;
+}
+
+.categoryselectors{
+  display: flex;
+  gap: 1em;
 }
 
 .loading {

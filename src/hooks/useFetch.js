@@ -19,8 +19,7 @@ const useFetch = (url, initialPage = 1, limit = 10) => {
 
         setData((prevData) => {
           const newData = [...prevData];
-          newData.splice((page - 1) * limit, limit, ...jsonData);
-          console.log(newData)
+          newData.splice((page - 1) * limit, limit, ...jsonData); 
           return newData;
 
         }); // Accumulate data correctly
@@ -33,8 +32,7 @@ const useFetch = (url, initialPage = 1, limit = 10) => {
       });
   }, [url, page, limit]);
 
-  const refresh = (id) => { 
-    console.log(Math.ceil(id / limit))
+  const refresh = (id) => {
     setPage(Math.floor(id / limit))
     fetchData()
   };
