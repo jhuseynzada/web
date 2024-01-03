@@ -33,7 +33,7 @@ const useFetch = (url, initialPage = 1, limit = 10) => {
   }, [url, page, limit]);
 
   const refresh = (id) => {
-    setPage(Math.floor(id / limit))
+    setPage(Math.ceil(id / limit))
     fetchData()
   };
 

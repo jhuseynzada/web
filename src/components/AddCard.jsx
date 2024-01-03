@@ -28,7 +28,7 @@ const AddCard = () => {
                     answer: formData.answer,
                     status: "Want to Learn",
                     createdAt: new Date(),
-                    updateAt: new Date()
+                    updatedAt: new Date()
                 }),
             });
 

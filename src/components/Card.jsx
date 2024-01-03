@@ -21,7 +21,7 @@ const Card = ({ item, refresh }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedData),
+        body: JSON.stringify({ ...updatedData, "updatedAt": new Date(), "status": item.status, "createdAt": item.createdAt }),
       });
 
       if (response.ok) {
