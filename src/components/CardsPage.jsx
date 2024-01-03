@@ -70,10 +70,21 @@ function CardsPage() {
         const subject = encodeURIComponent('Shared Cards Details');
         const body = encodeURIComponent(`Here are the shared cards details:\n\n${jsonToShare}`);
         const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
-    
+
         window.location.href = mailtoLink;
     };
-    
+
+    const onDragEnd = (result) => {
+        if (!result.destination) return; // dropped outside the list
+
+        const reorderedCards = Array.from(filteredCards);
+        const [removed] = reorderedCards.splice(result.source.index, 1);
+        reorderedCards.splice(result.destination.index, 0, removed);
+
+        setFilteredCards(reorderedCards);
+    };
+
+
 
     return (
         <div className='pages-container'>
