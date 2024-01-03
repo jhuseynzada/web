@@ -1,25 +1,55 @@
+/* General Card Styling */
 .card {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
+  background-color: #fff; /* default background color */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.question {
-    font-size: 18px;
-    font-weight: bold;
+/* Question and Answer Styling */
+.question, .answer {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .answer {
-    margin-top: 10px;
-    font-size: 16px;
-    color: gray;
+  color: #555;
 }
 
-.loading {
-    text-align: center;
+/* Buttons Styling */
+.card-buttons button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button {
+  background-color: #2980B9; /* Blue */
+  color: white;
+}
+
+.edit-button {
+  background-color: #F39C12; /* Yellow */
+  color: white;
+}
+
+.delete-button {
+  background-color: #E74C3C; /* Red */
+  color: white;
+}
+
+.card-buttons button:hover {
+  opacity: 0.8;
+}
+
+/* Date and Status Styling */
+.date, .status {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 5px;
 }
