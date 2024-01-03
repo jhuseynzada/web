@@ -62,7 +62,7 @@ This project uses `json-server` as a mock backend. It allows you to simulate a r
 
 **json-server Data File**
 
-The data for `json-server` is stored in a file, typically named `db.json`, located at the root of the project. This file is used to simulate the database for your application.
+The data for `json-server` is stored in a file, typically named `server.json`, located at the root of the project. This file is used to simulate the database for your application.
 
 ### Endpoints
 
