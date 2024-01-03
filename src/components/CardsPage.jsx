@@ -66,11 +66,14 @@ function CardsPage() {
     };
 
     const handleShare = () => {
-        const jsonToShare = JSON.stringify(sharedCards);
-        console.log(jsonToShare); // For now, we'll just log it to the console
-
-        // Here, you would send 'jsonToShare' to your backend or email service
+        const jsonToShare = JSON.stringify(sharedCards, null, 2);
+        const subject = encodeURIComponent('Shared Cards Details');
+        const body = encodeURIComponent(`Here are the shared cards details:\n\n${jsonToShare}`);
+        const mailtoLink = `mailto:?subject=${subject}&body=${body}`;
+    
+        window.location.href = mailtoLink;
     };
+    
 
     return (
         <div className='pages-container'>
